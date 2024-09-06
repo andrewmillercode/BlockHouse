@@ -8,7 +8,7 @@ const GraphComponent = ({typeChart}) => {
     const chart = useRef(null);
     const [labels,setLabels] = useState([]);
     const [data,setData] = useState([]);
-
+    const [error,Seterror] = useState(false);
     let chartConfigData = {
         labels: labels,
         datasets: [
@@ -49,8 +49,6 @@ const GraphComponent = ({typeChart}) => {
         fetch(`http://127.0.0.1:8000/api/${apiParam}/`)
             .then(response => response.json())
             .then(res => {
-                console.log(res);
-                
                 setData(res.data);
                 setLabels(res.labels);
                
@@ -60,6 +58,7 @@ const GraphComponent = ({typeChart}) => {
                 chart.current.update();
             })
             .catch(error => {
+                Seterror(true);
                 console.log('Error fetching data:', error);
             });
     }
@@ -72,14 +71,15 @@ const GraphComponent = ({typeChart}) => {
   return (
     <div className='graphComponent'>
         <h1>{typeChart} Chart</h1>
-        {typeChart=="Line" && <Line ref={chart}data={chartConfigData} options={chartConfigoptions}/>}
-        {typeChart=="Bar" && <Bar ref={chart}data={chartConfigData} options={chartConfigoptions}/>}
-        {typeChart=="Pie" && 
-        
+        {error==true && <h1 style={{color:'red'}}>error!</h1>}
+        {!error && typeChart=="Line" && <Line ref={chart}data={chartConfigData} options={chartConfigoptions}/>}
+        {!error && typeChart=="Bar" && <Bar ref={chart}data={chartConfigData} options={chartConfigoptions}/>}
+        {!error && typeChart=="Pie" && 
+       
         <div style={{height:"75%",position:"relative", marginBottom:"25%", padding:"0"}}>
             <Pie ref={chart}data={chartConfigData} options={chartConfigoptions}/>
         </div>}
-        {typeChart=="Candlestick" && <CandlestickChart options={chartConfigoptions}/>}
+        {!error && typeChart=="Candlestick" && <CandlestickChart upderror={Seterror}/>}
     </div>
     
   );
