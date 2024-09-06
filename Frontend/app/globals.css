@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100;1,100&display=swap');
+
+:root {
+  --background : rgb(252, 252, 252);
+  --black : rgb(15, 15, 15);
+  --blackAccent : rgb(17, 17, 17);
+  --borders: rgb(39, 39, 39);
+}
+body,html{
+  background-color: var(--blackAccent);
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+#graphComponentHolder{
+  width:100vw;
+  height:max-content;
+  background-color: var(--blackAccent);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:0px;
+  gap:15px;
+  flex-wrap: wrap;
+  
+}
+#blockhouseLogo{
+  width:35px;
+  height:35px;
+  border-radius: 999px;
+  border: 2px solid var(--borders);
+}
+header{
+  border-bottom: 2px solid var(--borders);
+  margin-bottom: 25px;
+  background-color: var(--black);
+  width:100vw;
+  height:60px;
+  display: flex;
+  padding: 10px;
+  
+  justify-content: space-around;
+  align-items: center;
+}
+#aboutTitle{
+  font-size: 1em;
+}
+h1{
+  color:white;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  width: fit-content;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  
+}
+
+.graphComponent{
+  
+  width: 300px;
+  height:300px;
+  background-color: rgb(24, 24, 24);
+  border: 2.5px solid rgb(39, 39, 39);
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.459);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding:10px;
+  
+
+}
+
+
+@media only screen and (min-width: 425px) {
+  
+}
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  .graphComponent{
+    width: 320px;
+    height:320px;
+  }
+  #graphComponentHolder{
+    flex-direction: row;
+    align-items: start;
+    padding:0;
+    padding-left: 25px;
+  }
+  #aboutTitle{
+    font-size: 1.5em;
+  }
+}
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 1024px) {
+  .graphComponent{
+    width: 350px;
+    height:350px;
+  }
+}
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {
+  .graphComponent{
+    width: 375px;
+    height:375px;
+  }
+}
